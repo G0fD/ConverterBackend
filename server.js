@@ -1,9 +1,19 @@
+require('dotenv').config()
 const express = require('express')
+const mongoose = require('mongoose')
 const app = express()
 
-//routes
-app.get('/', (req, res) =>{
-    res.send("Hello")
-})
+app.use(express.json())
 
-app.listen(3000)
+mongoose.connect(process.env.DATABASE).then(()=>{
+    console.log('connected to MongoDB');
+
+    const currencyController = require('./controllers/currencyController');
+    app.use('/', currencyController);
+    app.listen(3000, ()=>{
+        console.log("App is running on port 3000");
+    })
+
+}).catch((error)=>{
+    console.log(error);
+})
