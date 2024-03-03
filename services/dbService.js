@@ -101,7 +101,7 @@ class DatabaseService {
                 message: "Updated database!"
             }
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return {
                 status: 500,
                 message: "Error while updating database",

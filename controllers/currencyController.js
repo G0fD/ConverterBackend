@@ -11,7 +11,6 @@ app.use(express.json())
 router.post('/getByCode', async (req, res) =>{
     const result = await dbManager.getCurrency(req.body.code)
     res.send(result)
-    console.log(result)
 })
 
 router.get('/getAll', async (req,res) =>{
@@ -34,7 +33,6 @@ router.get('/updateDatabase', async (req, res) =>{
 router.post('/recalculate', async (req, res) =>{
     const result = await calculate(req.body)
     res.send(result)
-    console.log(result)
 })
 
 module.exports = router;

@@ -1,11 +1,10 @@
 const dataSource = require("./dbService").prototype.getAll()
 
 const calculate = async (currency) =>{
-    console.log(currency)
     if (!currency || currency.value === undefined || currency.value <= 0.0 || isNaN(currency.value)) {
         return{
             status: 501,
-            message: "Bad currency"
+            message: "Bad currency or <=0 quantity"
         }
     }
 
@@ -18,7 +17,8 @@ const calculate = async (currency) =>{
             const recalculatedValue = (currency.value * baseRate.value) / rate.value
             return {
                 code: rate.code,
-                value: recalculatedValue
+                value: recalculatedValue,
+                name: rate.name
             };
         });
 
