@@ -20,8 +20,6 @@ Endpoints allow the user to:
 ***
 To create backend, I used:
 * git
-* HTML
-* CSS
 * Express.js
 * Mongoose
 * NoSQL (MongoDB)
